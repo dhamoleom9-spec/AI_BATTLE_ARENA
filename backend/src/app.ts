@@ -1,9 +1,13 @@
-import express from "express";
+import express from 'express';
+import runGraph from './ai/graph.ai.js'
 
-const app = express();
+const app = express()
 
-app.get("/health", (req,res) => {
-    res.status(200).json({ status: "ok"})
+
+app.get('/', async (req, res) => {
+    
+    const result = await runGraph("What is the capital of France? Provide a brief explanation.")
+    res.json(result)
 })
 
-export default app;
+export default app
